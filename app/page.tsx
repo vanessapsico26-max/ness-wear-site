@@ -25,72 +25,181 @@ export default function Page() {
     const mensagem =
       "Olá, NESS WEAR! Quero fazer um pedido:%0A%0A" +
       carrinho
-        .map(
-          (item) =>
-            `• ${item.nome} | Tam. ${item.tamanho} | R$ ${item.preco}`
-        )
+        .map((item) => `• ${item.nome} | Tam. ${item.tamanho} | R$ ${item.preco}`)
         .join("%0A") +
       `%0A%0ATotal: R$ ${total}%0A%0APode me confirmar disponibilidade, cores e pagamento?`;
 
-    return `https://wa.me/5511994585398?text=${mensagem}`;
+    return `https://wa.me/5511999999999?text=${mensagem}`;
   }
 
   return (
-    <main style={{ background: "#f6efe8", color: "#151313", minHeight: "100vh" }}>
-      
-      {/* HERO */}
-      <section style={{ background: "#000", color: "#fff", padding: "80px 20px", textAlign: "center" }}>
-        <h1 style={{ fontSize: 56, letterSpacing: 18, fontWeight: 300 }}>NESS</h1>
-        <p style={{ letterSpacing: 14 }}>WEAR</p>
-        <p style={{ marginTop: 30, letterSpacing: 8 }}>MOVE YOUR WAY</p>
+    <main className="site">
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap');
+
+        * { box-sizing: border-box; }
+
+        body {
+          margin: 0;
+          font-family: 'Montserrat', sans-serif;
+          background: #f6efe8;
+          color: #151313;
+        }
+
+        .hero {
+          min-height: 100vh;
+          background: radial-gradient(circle at center, #1b1b1b 0%, #050505 65%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 40px;
+        }
+
+        .hero img {
+          max-width: 520px;
+          width: 90%;
+        }
+
+        .concept {
+          padding: 90px 24px;
+          text-align: center;
+          max-width: 900px;
+          margin: 0 auto;
+        }
+
+        .concept h1 {
+          font-family: 'Poppins', sans-serif;
+          font-size: 42px;
+          font-weight: 300;
+          line-height: 1.25;
+        }
+
+        .concept p {
+          font-size: 18px;
+          color: #5f5953;
+          line-height: 1.8;
+        }
+
+        .shop {
+          padding: 70px 24px;
+          max-width: 1180px;
+          margin: 0 auto;
+        }
+
+        .shop h2 {
+          font-family: 'Poppins', sans-serif;
+          font-size: 36px;
+          font-weight: 300;
+          margin-bottom: 8px;
+        }
+
+        .subtitle {
+          color: #7a7168;
+          margin-bottom: 32px;
+        }
+
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          gap: 22px;
+        }
+
+        .card {
+          background: #fff;
+          border-radius: 28px;
+          padding: 26px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+
+        .card h3 {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 400;
+          font-size: 22px;
+        }
+
+        .price {
+          font-size: 26px;
+          font-weight: 500;
+        }
+
+        .size-btn {
+          border: 1px solid #151313;
+          background: #151313;
+          color: white;
+          border-radius: 999px;
+          padding: 10px 15px;
+          margin-right: 8px;
+          margin-bottom: 8px;
+          cursor: pointer;
+          font-family: 'Montserrat', sans-serif;
+        }
+
+        .cart {
+          background: #151313;
+          color: white;
+          padding: 70px 24px;
+          text-align: center;
+        }
+
+        .cart h2 {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 300;
+          font-size: 34px;
+        }
+
+        .whats {
+          background: white;
+          color: black;
+          border: none;
+          padding: 17px 32px;
+          border-radius: 999px;
+          cursor: pointer;
+          font-weight: 600;
+          letter-spacing: 1px;
+          margin-top: 20px;
+        }
+      `}</style>
+
+      <section className="hero">
+        <img src="/logo-ness.jpg" alt="NESS WEAR" />
       </section>
 
-      {/* CONCEITO */}
-      <section style={{ padding: "60px 20px", maxWidth: 900, margin: "0 auto" }}>
-        <h2 style={{ fontSize: 36, fontWeight: 300 }}>Para mulheres reais, em movimento.</h2>
-        <p style={{ fontSize: 18, lineHeight: 1.7, color: "#555" }}>
+      <section className="concept">
+        <h1>Conforto que acompanha seu movimento. Estilo que sustenta sua confiança.</h1>
+        <p>
           NESS WEAR é sobre leveza, movimento e confiança. Peças que acompanham
           seu corpo, sua rotina e sua melhor versão — todos os dias.
         </p>
       </section>
 
-      {/* LOJA */}
-      <section style={{ padding: "40px 20px", maxWidth: 1100, margin: "0 auto" }}>
-        <h2 style={{ fontSize: 32, fontWeight: 300 }}>Loja</h2>
+      <section className="shop">
+        <h2>Primeiro drop</h2>
+        <p className="subtitle">Peças selecionadas • Estoque limitado</p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 20 }}>
+        <div className="grid">
           {produtos.map((produto) => (
-            <div key={produto.nome} style={{ background: "#fff", padding: 24, borderRadius: 24 }}>
+            <div className="card" key={produto.nome}>
               <h3>{produto.nome}</h3>
-              <p style={{ fontSize: 24 }}>R$ {produto.preco}</p>
-
+              <p className="price">R$ {produto.preco}</p>
               <p>Tamanho:</p>
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                {produto.tamanhos.map((tamanho) => (
-                  <button
-                    key={tamanho}
-                    onClick={() => adicionarProduto(produto, tamanho)}
-                    style={{
-                      padding: "10px 14px",
-                      borderRadius: 30,
-                      border: "1px solid #111",
-                      background: "#111",
-                      color: "#fff",
-                      cursor: "pointer",
-                    }}
-                  >
-                    {tamanho}
-                  </button>
-                ))}
-              </div>
+
+              {produto.tamanhos.map((tamanho) => (
+                <button
+                  className="size-btn"
+                  key={tamanho}
+                  onClick={() => adicionarProduto(produto, tamanho)}
+                >
+                  {tamanho}
+                </button>
+              ))}
             </div>
           ))}
         </div>
       </section>
 
-      {/* CARRINHO */}
-      <section style={{ padding: "40px 20px", maxWidth: 900, margin: "0 auto" }}>
-        <h2>Carrinho</h2>
+      <section className="cart">
+        <h2>Seu pedido</h2>
 
         {carrinho.length === 0 && <p>Nenhum produto selecionado ainda.</p>}
 
@@ -104,22 +213,10 @@ export default function Page() {
 
         {carrinho.length > 0 && (
           <a href={linkWhatsApp()} target="_blank">
-            <button
-              style={{
-                background: "#000",
-                color: "#fff",
-                border: "none",
-                padding: "16px 28px",
-                borderRadius: 30,
-                cursor: "pointer",
-              }}
-            >
-              Finalizar pedido no WhatsApp
-            </button>
+            <button className="whats">Quero meu look agora</button>
           </a>
         )}
       </section>
-
     </main>
   );
 }
