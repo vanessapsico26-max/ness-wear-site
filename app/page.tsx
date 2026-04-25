@@ -32,7 +32,7 @@ export default function Page() {
         .join("%0A") +
       `%0A%0ATotal: R$ ${total}%0A%0APode me confirmar disponibilidade, cores e pagamento?`;
 
-    return `https://wa.me/5511999999999?text=${mensagem}`;
+    return `https://wa.me/5511994585398?text=${mensagem}`;
   }
 
   return (
